@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.status(200);
+  res.json({
+    status: 'OK',
+    app: 'AccountService',
+    version: 'v1.0.0'
+  });
 });
 
 module.exports = router;
