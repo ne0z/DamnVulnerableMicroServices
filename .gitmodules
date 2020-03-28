@@ -1,0 +1,3 @@
+[submodule "src/MongoDB"]
+	path = src/MongoDB
+	url = git@github.com:docker-library/mongo.git
