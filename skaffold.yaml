@@ -14,6 +14,8 @@ build:
     context: ./src/ProductService
   - image: frontend-service
     context: ./src/FrontendService
+  - image: mongo
+    context: ./src/MongoDB/4.0
 deploy:
   kubectl:
     manifests:
