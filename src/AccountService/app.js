@@ -12,6 +12,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('../../docs/OpenAPI/AccountService/swagger.json');
+
+app.use('/api/account/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/account', indexRouter);
 
 // catch 404 and forward to error handler

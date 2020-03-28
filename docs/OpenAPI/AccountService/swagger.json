@@ -1,0 +1,161 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Account Service API Documentation",
+      "description": "Serving account operation.",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/account",
+    "tags": [
+      {
+        "name": "Account",
+        "description": "API for accounts in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/": {
+        "put": {
+          "tags": [
+            "Account"
+          ],
+          "description": "Create new account in system",
+          "parameters": [
+            {
+              "name": "account",
+              "in": "body",
+              "description": "Account that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New Account is created",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Account"
+          ],
+          "summary": "Get all Accounts in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        }
+      },
+      "/{AccountId}": {
+        "parameters": [
+          {
+            "name": "AccountId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Account that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Account"
+          ],
+          "summary": "Get Account with given ID",
+          "responses": {
+            "200": {
+              "description": "Account is found",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete Account with given ID",
+          "tags": [
+            "Account"
+          ],
+          "responses": {
+            "200": {
+              "description": "Account is deleted",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        },
+        "patch": {
+          "summary": "Update Account with give ID",
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "Account",
+              "in": "body",
+              "description": "Account with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Account is updated",
+              "schema": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Account": {
+        "required": [
+          "email",
+          "_id"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "email": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
