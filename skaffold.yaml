@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+build: 
+  artifacts: 
+  - image: account-service
+    context: ./src/AccountService
+  - image: authentication-service
+    context: ./src/AuthenticationService
+  - image: management-service
+    context: ./src/ManagementService
+  - image: payment-service
+    context: ./src/PaymentService
+  - image: product-service
+    context: ./src/ProductService
+  - image: frontend-service
+    context: ./src/FrontendService
+deploy:
+  kubectl:
+    manifests:
+      - ./kubernetes-manifests/*/*
