@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: edge-ingress
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/account
+        backend:
+          serviceName: account-service
+          servicePort: 80
+      - path: /api/authentication
+        backend:
+          serviceName: authentication-service
+          servicePort: 80
+      - path: /api/product
+        backend:
+          serviceName: product-service
+          servicePort: 80
+      - path: /api/management
+        backend:
+          serviceName: management-service
+          servicePort: 80
+      - path: /api/payment
+        backend:
+          serviceName: payment-service
+          servicePort: 80
+      - path: /
+        backend:
+          serviceName: frontend-service
+          servicePort: 80
+          
