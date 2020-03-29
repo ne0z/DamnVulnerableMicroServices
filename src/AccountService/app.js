@@ -1,17 +1,24 @@
 var createError = require('http-errors');
 var express = require('express');
 var logger = require('morgan');
+const mongoose = require("mongoose");
+const db = require("./config/keys").mongoURI;
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+mongoose
+    .connect(db)
+    .then(() => console.log("mongoDB Connected"))
+    .catch((err) => console.log(err));
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 var swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('../../docs/OpenAPI/AccountService/swagger.json');
+    swaggerDocument = require('./swagger.json');
 
 app.use('/api/account/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/account', indexRouter);
