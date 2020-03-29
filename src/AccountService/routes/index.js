@@ -47,17 +47,22 @@ router.post('/', function(req, res, next) {
 
 // Get account
 router.get('/:user', function(req, res, next) {
-  res.status(200);
-  res.json({
-    status: 'OK',
-    data: {
-      id: 'b065a298-d897-4441-979d-d2f26b0265cf',
-      username: 'danang.heriyadi',
-      password: 'e5828c564f71fea3a12dde8bd5d27063',
-      email: 'danang.ganteng@example.net',
-      full_name: 'Danang Heriyadi',
-      gender: 0
-    }
+  var user_id = request.params.user;
+  Account.findOne({
+    _id: user_id
+  })
+  .then(account => {
+      if(account){
+          return res.status(200).json({
+            status: 'OK',
+            data: account
+          });
+      }else{
+          return res.status(400).json({
+            status: 'FAIL',
+            message: 'Account not found'
+          })
+      }
   });
 });
 
