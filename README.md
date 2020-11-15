@@ -10,3 +10,20 @@ We do not take responsibility for the way in which any one uses this microservic
 
 ## License
 Damn Vulnerable Microservices is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+## Requirements
+1. Kubernetes cluster on your local desktop (https://kubernetes.io/docs/tasks/tools/)
+2. Homebrew (https://brew.sh/)
+
+## How to setup
+
+```bash
+$ brew install skaffold
+$ git clone git@github.com:ne0z/DamnVulnerableMicroServices.git
+$ git submodule update --init
+```
+
+## How to run in development mode
+```bash
+$ skaffold dev
+```
