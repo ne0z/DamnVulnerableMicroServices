@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongodata
 spec:
-  storageClassName: manual
+  storageClassName: microk8s-hostpath
   accessModes:
     - ReadWriteOnce
   resources:
